@@ -1,0 +1,277 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Inicio">
+  <section class="hero">
+    <h1>Bienvenido a Cafetería Aroma</h1>
+    <p class="hero-subtitle">Donde cada taza cuenta una historia</p>
+  </section>
+
+  <section class="image-section">
+    <img src="/img/cafe.jpg" alt="Café recién hecho" class="hero-image" />
+  </section>
+
+  <section class="intro">
+    <p class="intro-text">
+      En <strong>Cafetería Aroma</strong> creemos que cada taza cuenta. Disfruta de un ambiente acogedor y aromas que inspiran. 
+      Nuestra pasión por el café de calidad y la atención al detalle nos convierte en tu refugio perfecto.
+    </p>
+  </section>
+
+  <section class="features">
+    <h2>¿Por qué elegirnos?</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🌱</div>
+        <h3>Ingredientes Naturales</h3>
+        <p>Seleccionamos cuidadosamente granos de origen sostenible y productos orgánicos de primera calidad.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">👨‍🍳</div>
+        <h3>Preparación Artesanal</h3>
+        <p>Cada bebida es preparada con técnicas tradicionales por nuestros baristas expertos.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">❤️</div>
+        <h3>Ambiente Familiar</h3>
+        <p>Un espacio acogedor donde te sentirás como en casa, perfecto para compartir momentos especiales.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="values">
+    <h2>Nuestros Valores</h2>
+    <ul class="values-list">
+      <li>Compromiso con la calidad en cada taza</li>
+      <li>Atención personalizada a cada cliente</li>
+      <li>Pasión por la cultura del café</li>
+      <li>Sostenibilidad y respeto al medio ambiente</li>
+    </ul>
+  </section>
+
+  <section class="testimonials">
+    <h2>Lo que dicen nuestros clientes</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <p class="testimonial-text">"El mejor café de Madrid. El ambiente es increíble y el personal super amable."</p>
+        <p class="testimonial-author">- María González</p>
+      </div>
+      <div class="testimonial">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <p class="testimonial-text">"Mi lugar favorito para trabajar. El cappuccino es arte puro y las tartas deliciosas."</p>
+        <p class="testimonial-author">- Carlos Ruiz</p>
+      </div>
+      <div class="testimonial">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <p class="testimonial-text">"Calidad excepcional. Se nota el cuidado en cada detalle, desde el grano hasta la presentación."</p>
+        <p class="testimonial-author">- Ana Martínez</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <h2>Visítanos Hoy</h2>
+    <p>Descubre por qué somos la cafetería favorita del barrio</p>
+    <a href="/contacto" class="cta-button">Encuéntranos</a>
+  </section>
+
+  <style>
+    .hero {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.5rem;
+      font-style: italic;
+      color: #c4a572;
+      margin-top: -1rem;
+    }
+
+    .image-section {
+      text-align: center;
+      margin: 3rem 0;
+    }
+
+    .hero-image {
+      max-width: 800px;
+      width: 100%;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    }
+
+    .intro {
+      max-width: 900px;
+      margin: 3rem auto;
+    }
+
+    .intro-text {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: #555;
+    }
+
+    .features {
+      margin: 5rem 0;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .feature-card {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+      border-color: #d4a574;
+    }
+
+    .feature-icon {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .feature-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #6f4e37;
+    }
+
+    .feature-card p {
+      font-size: 1rem;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    .values {
+      margin: 5rem 0;
+    }
+
+    .values-list {
+      max-width: 700px;
+    }
+
+    .testimonials {
+      margin: 5rem 0;
+      background: linear-gradient(135deg, #faf6f1 0%, #fff 100%);
+      padding: 4rem 2rem;
+      border-radius: 30px;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .testimonial {
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease;
+    }
+
+    .testimonial:hover {
+      transform: scale(1.05);
+    }
+
+    .stars {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .testimonial-text {
+      font-style: italic;
+      color: #555;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+
+    .testimonial-author {
+      font-weight: 600;
+      color: #6f4e37;
+      text-align: right;
+      font-size: 0.95rem;
+    }
+
+    .cta {
+      text-align: center;
+      margin: 5rem 0;
+      padding: 4rem 2rem;
+      background: linear-gradient(135deg, #6f4e37, #4a3428);
+      border-radius: 30px;
+      color: white;
+    }
+
+    .cta h2 {
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    .cta h2::after {
+      background: linear-gradient(90deg, #c4a572, #d4a574);
+    }
+
+    .cta p {
+      color: #f0e6d2;
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 1.2rem 3rem;
+      background: linear-gradient(135deg, #c4a572, #d4a574);
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.2rem;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+      background: linear-gradient(135deg, #d4a574, #c4a572);
+    }
+
+    @media (max-width: 768px) {
+      .features-grid, .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</BaseLayout>

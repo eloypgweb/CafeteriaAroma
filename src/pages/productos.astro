@@ -1,0 +1,400 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Productos">
+  <section class="hero-section">
+    <h1>Nuestros Productos</h1>
+    <p class="subtitle">Explora nuestra selección de cafés, tés y postres artesanales preparados con amor y dedicación.</p>
+  </section>
+
+  <section class="products-intro">
+    <div class="intro-card">
+      <span class="icon">☕</span>
+      <h3>Café Premium</h3>
+      <p>Granos seleccionados de origen único</p>
+    </div>
+    <div class="intro-card">
+      <span class="icon">🍰</span>
+      <h3>Repostería Artesanal</h3>
+      <p>Elaborada diariamente en nuestro obrador</p>
+    </div>
+    <div class="intro-card">
+      <span class="icon">🍵</span>
+      <h3>Tés Selectos</h3>
+      <p>Variedades de todo el mundo</p>
+    </div>
+  </section>
+
+  <section class="menu-section">
+    <h2>Nuestra Carta</h2>
+    
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-header espresso">
+          <span class="product-emoji">☕</span>
+        </div>
+        <div class="product-body">
+          <h3>Café Espresso</h3>
+          <p>Intenso y con cuerpo, perfecto para comenzar el día. Granos 100% arábica tostado medio.</p>
+          <div class="product-footer">
+            <span class="price">€2.50</span>
+            <span class="badge">Popular</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-header cappuccino">
+          <span class="product-emoji">☕</span>
+        </div>
+        <div class="product-body">
+          <h3>Cappuccino</h3>
+          <p>Mezcla equilibrada de espresso, leche vaporizada y espuma sedosa. Con arte latte incluido.</p>
+          <div class="product-footer">
+            <span class="price">€3.00</span>
+            <span class="badge special">Especial</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-header latte">
+          <span class="product-emoji">🥛</span>
+        </div>
+        <div class="product-body">
+          <h3>Café Latte</h3>
+          <p>Suave y cremoso, con mayor proporción de leche. Ideal para los que prefieren sabores más delicados.</p>
+          <div class="product-footer">
+            <span class="price">€3.20</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-header mocha">
+          <span class="product-emoji">🍫</span>
+        </div>
+        <div class="product-body">
+          <h3>Mocha</h3>
+          <p>Espresso con chocolate belga y leche cremosa. Coronado con nata montada y cacao en polvo.</p>
+          <div class="product-footer">
+            <span class="price">€3.80</span>
+            <span class="badge sweet">Dulce</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-header cheesecake">
+          <span class="product-emoji">🍰</span>
+        </div>
+        <div class="product-body">
+          <h3>Tarta de Queso</h3>
+          <p>Hecha cada mañana con ingredientes frescos. Cremosa textura con base de galleta crujiente.</p>
+          <div class="product-footer">
+            <span class="price">€3.50</span>
+            <span class="badge">Recomendado</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-header brownie">
+          <span class="product-emoji">🍫</span>
+        </div>
+        <div class="product-body">
+          <h3>Brownie de Chocolate</h3>
+          <p>Intenso chocolate negro con nueces. Servido tibio con helado de vainilla opcional.</p>
+          <div class="product-footer">
+            <span class="price">€4.00</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-header croissant">
+          <span class="product-emoji">🥐</span>
+        </div>
+        <div class="product-body">
+          <h3>Croissant Artesanal</h3>
+          <p>Hojaldre francés tradicional, crujiente por fuera y tierno por dentro. Recién horneado cada día.</p>
+          <div class="product-footer">
+            <span class="price">€2.80</span>
+            <span class="badge new">Nuevo</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-header tea">
+          <span class="product-emoji">🍵</span>
+        </div>
+        <div class="product-body">
+          <h3>Té Verde Matcha</h3>
+          <p>Té verde japonés de alta calidad. Rico en antioxidantes y con un sabor único y delicado.</p>
+          <div class="product-footer">
+            <span class="price">€3.50</span>
+            <span class="badge healthy">Saludable</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-header smoothie">
+          <span class="product-emoji">🥤</span>
+        </div>
+        <div class="product-body">
+          <h3>Smoothie Tropical</h3>
+          <p>Mezcla refrescante de mango, piña y maracuyá. 100% natural sin azúcares añadidos.</p>
+          <div class="product-footer">
+            <span class="price">€4.50</span>
+            <span class="badge healthy">Saludable</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="extras">
+    <h2>Extras & Personalizaciones</h2>
+    <div class="extras-list">
+      <div class="extra-item">
+        <span>☕ Shot extra de espresso</span>
+        <span class="extra-price">+€0.50</span>
+      </div>
+      <div class="extra-item">
+        <span>🥛 Leche vegetal (soja, avena, almendra)</span>
+        <span class="extra-price">+€0.60</span>
+      </div>
+      <div class="extra-item">
+        <span>🍯 Sirope (vainilla, caramelo, avellana)</span>
+        <span class="extra-price">+€0.70</span>
+      </div>
+      <div class="extra-item">
+        <span>💨 Nata montada extra</span>
+        <span class="extra-price">+€0.50</span>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .hero-section {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .subtitle {
+      font-size: 1.3rem;
+      color: #666;
+      font-style: italic;
+      margin-top: -1rem;
+    }
+
+    .products-intro {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0 5rem;
+    }
+
+    .intro-card {
+      text-align: center;
+      padding: 2rem;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease;
+    }
+
+    .intro-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .intro-card .icon {
+      font-size: 3rem;
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    .intro-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      color: #6f4e37;
+    }
+
+    .intro-card p {
+      font-size: 0.95rem;
+      color: #777;
+      margin: 0;
+    }
+
+    .menu-section {
+      margin: 5rem 0;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2.5rem;
+      margin-top: 3rem;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+      border-color: #d4a574;
+    }
+
+    .product-header {
+      height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(111, 78, 55, 0.9), rgba(196, 165, 114, 0.9));
+      z-index: 1;
+    }
+
+    .espresso::before { background: linear-gradient(135deg, #4a3428, #6f4e37); }
+    .cappuccino::before { background: linear-gradient(135deg, #8b6f47, #c4a572); }
+    .latte::before { background: linear-gradient(135deg, #a0826d, #d4a574); }
+    .mocha::before { background: linear-gradient(135deg, #3e2723, #6d4c41); }
+    .cheesecake::before { background: linear-gradient(135deg, #ffb74d, #ffa726); }
+    .brownie::before { background: linear-gradient(135deg, #5d4037, #795548); }
+    .croissant::before { background: linear-gradient(135deg, #f9a825, #fbc02d); }
+    .tea::before { background: linear-gradient(135deg, #689f38, #8bc34a); }
+    .smoothie::before { background: linear-gradient(135deg, #f06292, #ec407a); }
+
+    .product-emoji {
+      font-size: 4rem;
+      z-index: 2;
+      position: relative;
+      filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.3));
+    }
+
+    .product-body {
+      padding: 1.8rem;
+    }
+
+    .product-body h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.8rem;
+      color: #6f4e37;
+    }
+
+    .product-body p {
+      font-size: 0.95rem;
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      text-align: left;
+    }
+
+    .product-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .price {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #6f4e37;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .badge {
+      padding: 0.4rem 1rem;
+      background: linear-gradient(135deg, #c4a572, #d4a574);
+      color: white;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .badge.special {
+      background: linear-gradient(135deg, #6f4e37, #4a3428);
+    }
+
+    .badge.sweet {
+      background: linear-gradient(135deg, #f06292, #ec407a);
+    }
+
+    .badge.new {
+      background: linear-gradient(135deg, #66bb6a, #4caf50);
+    }
+
+    .badge.healthy {
+      background: linear-gradient(135deg, #26a69a, #00897b);
+    }
+
+    .extras {
+      margin: 5rem 0;
+      background: linear-gradient(135deg, #faf6f1, #fff);
+      padding: 3rem;
+      border-radius: 25px;
+    }
+
+    .extras-list {
+      max-width: 800px;
+      margin: 2rem auto 0;
+    }
+
+    .extra-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 1.5rem;
+      background: white;
+      margin-bottom: 1rem;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+    }
+
+    .extra-item:hover {
+      transform: translateX(10px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    .extra-price {
+      font-weight: 700;
+      color: #6f4e37;
+      font-size: 1.1rem;
+    }
+
+    @media (max-width: 768px) {
+      .products-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .subtitle {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</BaseLayout>
