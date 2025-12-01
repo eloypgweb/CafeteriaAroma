@@ -1,0 +1,206 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ComparisonCard from "../components/ComparisonCard.astro";
+
+// Comparación de Métodos de Preparación de Café
+const brewingMethods = [
+  {
+    title: "Espresso",
+    subtitle: "Método tradicional italiano",
+    image: "https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?w=800&h=600&fit=crop",
+    price: "€2.50",
+    priceNote: "por taza",
+    features: [
+      { name: "Intensidad de sabor", included: true, value: "Muy alta" },
+      { name: "Tiempo de preparación", included: true, value: "25-30 seg" },
+      { name: "Concentración de cafeína", included: true, value: "Alta" },
+      { name: "Requiere máquina especial", included: true },
+      { name: "Ideal para cappuccino/latte", included: true },
+      { name: "Fácil de preparar en casa", included: false },
+    ],
+    buttonText: "Pedir Espresso",
+    buttonLink: "/contacto"
+  },
+  {
+    title: "V60",
+    subtitle: "Pour over japonés",
+    image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&h=600&fit=crop",
+    price: "€3.50",
+    priceNote: "por taza",
+    badge: "Recomendado",
+    highlighted: true,
+    features: [
+      { name: "Intensidad de sabor", included: true, value: "Media-Alta" },
+      { name: "Tiempo de preparación", included: true, value: "3-4 min" },
+      { name: "Concentración de cafeína", included: true, value: "Media" },
+      { name: "Requiere máquina especial", included: false },
+      { name: "Ideal para cappuccino/latte", included: false },
+      { name: "Fácil de preparar en casa", included: true },
+    ],
+    buttonText: "Probar V60",
+    buttonLink: "/contacto"
+  },
+  {
+    title: "French Press",
+    subtitle: "Método tradicional francés",
+    image: "https://images.unsplash.com/photo-1517487881594-2787fef5ebf7?w=800&h=600&fit=crop",
+    price: "€3.00",
+    priceNote: "por taza",
+    features: [
+      { name: "Intensidad de sabor", included: true, value: "Alta" },
+      { name: "Tiempo de preparación", included: true, value: "4-5 min" },
+      { name: "Concentración de cafeína", included: true, value: "Alta" },
+      { name: "Requiere máquina especial", included: false },
+      { name: "Ideal para cappuccino/latte", included: false },
+      { name: "Fácil de preparar en casa", included: true },
+    ],
+    buttonText: "Pedir French Press",
+    buttonLink: "/contacto"
+  }
+];
+
+// Comparación de Orígenes de Café
+const coffeeOrigins = [
+  {
+    title: "Colombia",
+    subtitle: "Suave y balanceado",
+    image: "https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=800&h=600&fit=crop",
+    features: [
+      { name: "Notas de sabor", included: true, value: "Caramelo, nueces" },
+      { name: "Acidez", included: true, value: "Media" },
+      { name: "Cuerpo", included: true, value: "Medio" },
+      { name: "Dulzor natural", included: true },
+      { name: "Cultivo en altura", included: true, value: "1200-2000m" },
+      { name: "Proceso", included: true, value: "Lavado" },
+    ],
+    buttonText: "Ver detalles",
+    buttonLink: "/productos"
+  },
+  {
+    title: "Etiopía",
+    subtitle: "Cuna del café",
+    image: "https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=800&h=600&fit=crop",
+    badge: "Origen único",
+    highlighted: true,
+    features: [
+      { name: "Notas de sabor", included: true, value: "Floral, frutal" },
+      { name: "Acidez", included: true, value: "Alta" },
+      { name: "Cuerpo", included: true, value: "Ligero-Medio" },
+      { name: "Dulzor natural", included: true },
+      { name: "Cultivo en altura", included: true, value: "1500-2200m" },
+      { name: "Proceso", included: true, value: "Natural" },
+    ],
+    buttonText: "Ver detalles",
+    buttonLink: "/productos"
+  }
+];
+
+// Comparación de Planes de Suscripción
+const subscriptionPlans = [
+  {
+    title: "Plan Básico",
+    subtitle: "Para amantes ocasionales",
+    price: "€15",
+    priceNote: "por mes",
+    features: [
+      { name: "Café mensual", included: true, value: "250g" },
+      { name: "Variedades diferentes", included: true, value: "1 origen" },
+      { name: "Descuento en tienda", included: true, value: "5%" },
+      { name: "Envío gratis", included: false },
+      { name: "Acceso a eventos", included: false },
+      { name: "Taller de barismo", included: false },
+    ],
+    buttonText: "Comenzar",
+    buttonLink: "/contacto"
+  },
+  {
+    title: "Plan Premium",
+    subtitle: "Para verdaderos conocedores",
+    price: "€35",
+    priceNote: "por mes",
+    badge: "Más popular",
+    highlighted: true,
+    features: [
+      { name: "Café mensual", included: true, value: "500g" },
+      { name: "Variedades diferentes", included: true, value: "2 orígenes" },
+      { name: "Descuento en tienda", included: true, value: "15%" },
+      { name: "Envío gratis", included: true },
+      { name: "Acceso a eventos", included: true },
+      { name: "Taller de barismo", included: false },
+    ],
+    buttonText: "Suscribirse",
+    buttonLink: "/contacto"
+  },
+  {
+    title: "Plan Experto",
+    subtitle: "La experiencia completa",
+    price: "€60",
+    priceNote: "por mes",
+    features: [
+      { name: "Café mensual", included: true, value: "1kg" },
+      { name: "Variedades diferentes", included: true, value: "3 orígenes" },
+      { name: "Descuento en tienda", included: true, value: "25%" },
+      { name: "Envío gratis", included: true },
+      { name: "Acceso a eventos", included: true },
+      { name: "Taller de barismo", included: true, value: "Mensual" },
+    ],
+    buttonText: "Suscribirse",
+    buttonLink: "/contacto"
+  }
+];
+---
+
+<BaseLayout title="Comparativas - Cafetería Aroma">
+  <section class="mb-16">
+    <h1>Comparativas</h1>
+    <p class="text-xl text-gray-600 max-w-3xl">
+      Compara nuestros métodos, orígenes y planes para encontrar la opción perfecta para ti
+    </p>
+  </section>
+
+  <!-- Comparación de Métodos de Preparación -->
+  <section class="mb-24">
+    <ComparisonCard 
+      title="Métodos de Preparación"
+      description="Cada método extrae sabores únicos del café. Encuentra tu favorito."
+      items={brewingMethods}
+    />
+  </section>
+
+  <!-- Separador visual -->
+  <div class="max-w-4xl mx-auto mb-24">
+    <hr class="border-t-2 border-cream" />
+  </div>
+
+  <!-- Comparación de Orígenes -->
+  <section class="mb-24">
+    <ComparisonCard 
+      title="Orígenes del Café"
+      description="Cada región ofrece un perfil de sabor distintivo"
+      items={coffeeOrigins}
+    />
+  </section>
+
+  <!-- Separador visual -->
+  <div class="max-w-4xl mx-auto mb-24">
+    <hr class="border-t-2 border-cream" />
+  </div>
+
+  <!-- Comparación de Planes de Suscripción -->
+  <section class="mb-24">
+    <ComparisonCard 
+      title="Planes de Suscripción"
+      description="Recibe café de especialidad directamente en tu casa cada mes"
+      items={subscriptionPlans}
+    />
+  </section>
+
+  <!-- Call to Action -->
+  <section class="text-center my-20 px-8 py-16 bg-gradient-to-br from-primary to-primary-dark rounded-[2rem] text-white">
+    <h2 class="text-white mb-4">¿Necesitas ayuda para elegir?</h2>
+    <p class="text-cream text-xl mb-8">Nuestro equipo estará encantado de asesorarte personalmente</p>
+    <a href="/contacto" class="inline-block px-12 py-5 bg-gradient-to-r from-secondary to-secondary-light text-white no-underline font-bold text-xl rounded-full transition-all duration-300 shadow-2xl hover:-translate-y-1 hover:shadow-custom-hover uppercase tracking-wider">
+      Contáctanos
+    </a>
+  </section>
+</BaseLayout>

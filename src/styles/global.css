@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans text-gray-800 leading-relaxed;
+    background: linear-gradient(135deg, #faf6f1 0%, #fff 100%);
+  }
+
+  h1, h2, h3 {
+    @apply font-serif font-bold text-primary;
+  }
+
+  h1 {
+    @apply text-5xl md:text-6xl text-center mb-6 animate-slideDown;
+    background: linear-gradient(135deg, #6f4e37, #d4a574);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  h2 {
+    @apply text-4xl my-10 text-center relative;
+  }
+
+  h2::after {
+    content: '';
+    @apply block w-20 h-1 mx-auto mt-3 rounded-sm;
+    background: linear-gradient(90deg, #c4a572, #d4a574);
+  }
+
+  p {
+    @apply text-lg mb-5 text-center max-w-3xl mx-auto text-gray-600;
+  }
+
+  strong {
+    @apply text-primary font-semibold;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-white p-8 rounded-3xl shadow-custom mb-8 transition-all duration-300 border border-secondary-light/20;
+  }
+
+  .card:hover {
+    @apply -translate-y-2 shadow-custom-hover;
+  }
+
+  .info-card {
+    @apply card;
+  }
+
+  /* Estilos para tablas */
+  table {
+    @apply border-separate w-full max-w-4xl mx-auto bg-white rounded-3xl overflow-hidden shadow-custom my-8;
+    border-spacing: 0;
+  }
+
+  thead {
+    background: linear-gradient(135deg, #6f4e37, #4a3428);
+  }
+
+  th {
+    @apply text-white px-6 py-6 text-left text-base font-semibold uppercase tracking-wider;
+  }
+
+  td {
+    @apply px-6 py-6 border-b border-gray-100 transition-colors duration-300;
+  }
+
+  tr:hover td {
+    @apply bg-cream-light;
+  }
+
+  tr:last-child td {
+    @apply border-b-0;
+  }
+
+  /* Estilos para listas */
+  ul {
+    @apply list-none p-0 max-w-2xl mx-auto my-8;
+  }
+
+  ul li {
+    @apply bg-white px-6 py-5 mb-4 rounded-xl shadow-md relative pl-12 transition-all duration-300 text-base;
+  }
+
+  ul li:hover {
+    @apply translate-x-3 shadow-lg;
+  }
+
+  ul li::before {
+    content: '☕';
+    @apply absolute left-4 text-xl;
+  }
+}
+
+@layer utilities {
+  .animate-fadeIn {
+    animation: fadeIn 0.6s ease-in;
+  }
+
+  .animate-slideDown {
+    animation: slideDown 0.8s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  h1 {
+    @apply text-4xl;
+  }
+  
+  h2 {
+    @apply text-3xl;
+  }
+  
+  table {
+    @apply text-sm;
+  }
+  
+  th, td {
+    @apply px-4 py-4;
+  }
+}

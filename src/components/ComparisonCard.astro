@@ -1,0 +1,160 @@
+---
+/**
+ * ComparisonCard Component
+ * 
+ * Componente para mostrar comparaciones visuales entre dos o más elementos
+ * Perfecto para comparar productos, servicios, planes, etc.
+ * 
+ * @component
+ */
+
+interface Feature {
+  name: string;
+  included: boolean;
+  value?: string; // Valor opcional para features con detalles específicos
+}
+
+interface ComparisonItem {
+  title: string;
+  subtitle?: string;
+  price?: string;
+  priceNote?: string;
+  image?: string;
+  badge?: string; // Badge opcional como "Popular", "Mejor valor", etc.
+  features: Feature[];
+  highlighted?: boolean; // Para destacar una opción
+  buttonText?: string;
+  buttonLink?: string;
+}
+
+interface Props {
+  items: ComparisonItem[];
+  title?: string;
+  description?: string;
+}
+
+const { items, title, description } = Astro.props;
+---
+
+<div class="comparison-card-wrapper">
+  {title && (
+    <div class="text-center mb-20">
+      <h2 class="text-4xl font-serif font-bold text-primary mb-4">{title}</h2>
+      {description && <p class="text-xl text-gray-600 max-w-2xl mx-auto">{description}</p>}
+    </div>
+  )}
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+    {items.map((item) => (
+      <div 
+        class={`relative bg-white rounded-3xl shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 m-4 md:m-6 lg:m-8 ${
+          item.highlighted 
+            ? 'ring-4 ring-secondary scale-105 lg:scale-110' 
+            : ''
+        }`}
+      >
+        {/* Badge */}
+        {item.badge && (
+          <div class="absolute top-6 right-6 z-10">
+            <span class="px-4 py-2 bg-gradient-to-r from-secondary to-secondary-light text-white text-sm font-bold rounded-full shadow-lg uppercase tracking-wider">
+              {item.badge}
+            </span>
+          </div>
+        )}
+
+        {/* Imagen */}
+        {item.image && (
+          <div class="h-48 overflow-hidden bg-gradient-to-br from-primary-light to-cream">
+            <img 
+              src={item.image} 
+              alt={item.title}
+              class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+            />
+          </div>
+        )}
+
+        {/* Header */}
+        <div class={`p-8 text-center ${item.highlighted ? 'bg-gradient-to-br from-cream-light to-white' : 'bg-white'}`}>
+          <h3 class="text-2xl font-serif font-bold text-primary mb-2">{item.title}</h3>
+          {item.subtitle && (
+            <p class="text-gray-600 mb-4">{item.subtitle}</p>
+          )}
+          
+          {item.price && (
+            <div class="mt-6">
+              <div class="text-4xl font-bold text-primary mb-1">{item.price}</div>
+              {item.priceNote && (
+                <p class="text-sm text-gray-500">{item.priceNote}</p>
+              )}
+            </div>
+          )}
+        </div>
+
+        {/* Features List */}
+        <div class="px-8 pb-8">
+          <ul class="space-y-4">
+            {item.features.map((feature) => (
+              <li class="flex items-start gap-3">
+                {feature.included ? (
+                  <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                ) : (
+                  <svg class="w-6 h-6 text-gray-300 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                  </svg>
+                )}
+                <div class="flex-1">
+                  <span class={feature.included ? 'text-gray-800' : 'text-gray-400 line-through'}>
+                    {feature.name}
+                  </span>
+                  {feature.value && (
+                    <span class="text-secondary font-semibold ml-2">
+                      {feature.value}
+                    </span>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ul>
+
+          {/* CTA Button */}
+          {item.buttonText && (
+            <div class="mt-8">
+              <a 
+                href={item.buttonLink || '#'}
+                class={`block w-full text-center px-6 py-4 rounded-full font-bold text-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 no-underline ${
+                  item.highlighted
+                    ? 'bg-gradient-to-r from-primary to-primary-dark text-white'
+                    : 'bg-gradient-to-r from-secondary to-secondary-light text-white'
+                }`}
+              >
+                {item.buttonText}
+              </a>
+            </div>
+          )}
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  .comparison-card-wrapper {
+    @apply pt-4 md:pt-6 lg:pt-8;
+  }
+
+  /* Animación para el badge */
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 20px rgba(196, 165, 114, 0.5);
+    }
+    50% {
+      box-shadow: 0 0 30px rgba(196, 165, 114, 0.8);
+    }
+  }
+
+  .comparison-card-wrapper [class*="badge"] {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+</style>

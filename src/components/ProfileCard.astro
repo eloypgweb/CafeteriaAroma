@@ -1,0 +1,159 @@
+---
+interface Person {
+  name: string;
+  role: string;
+  image: string;
+  bio?: string;
+  email?: string;
+  phone?: string;
+  social?: {
+    instagram?: string;
+    linkedin?: string;
+    twitter?: string;
+  };
+}
+
+interface Props {
+  person: Person;
+  variant?: 'default' | 'compact' | 'detailed';
+  imageShape?: 'circle' | 'rounded' | 'square';
+  showContact?: boolean;
+}
+
+const { 
+  person, 
+  variant = 'default',
+  imageShape = 'circle',
+  showContact = false 
+} = Astro.props;
+
+// Mapeo de formas de imagen
+const shapeClass = {
+  circle: 'rounded-full',
+  rounded: 'rounded-2xl',
+  square: 'rounded-lg'
+};
+---
+
+{variant === 'compact' && (
+  <div class="bg-white p-6 rounded-2xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 text-center">
+    <div class="relative inline-block mb-4">
+      <img 
+        src={person.image} 
+        alt={person.name}
+        class={`w-24 h-24 object-cover ${shapeClass[imageShape]} border-4 border-secondary-light transition-transform duration-300 hover:scale-110`}
+      />
+      <div class="absolute -bottom-2 -right-2 bg-gradient-to-r from-secondary to-secondary-light text-white text-xs px-3 py-1 rounded-full font-semibold shadow-lg">
+        {person.role}
+      </div>
+    </div>
+    <h3 class="text-xl font-bold text-primary mb-2">{person.name}</h3>
+    {person.bio && (
+      <p class="text-sm text-gray-600 leading-relaxed">{person.bio}</p>
+    )}
+  </div>
+)}
+
+{variant === 'default' && (
+  <div class="bg-white rounded-3xl overflow-hidden shadow-custom transition-all duration-300 hover:shadow-custom-hover hover:-translate-y-3 group">
+    <div class="relative overflow-hidden bg-gradient-to-br from-primary-dark to-primary h-48 flex items-center justify-center">
+      <div class="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-300"></div>
+      <img 
+        src={person.image} 
+        alt={person.name}
+        class={`relative z-10 w-32 h-32 object-cover ${shapeClass[imageShape]} border-4 border-white shadow-2xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-3`}
+      />
+    </div>
+    <div class="p-6">
+      <div class="mb-4">
+        <h3 class="text-2xl font-serif font-bold text-primary mb-1">{person.name}</h3>
+        <p class="text-secondary font-semibold text-sm uppercase tracking-wide">{person.role}</p>
+      </div>
+      {person.bio && (
+        <p class="text-gray-600 leading-relaxed mb-4 text-sm">{person.bio}</p>
+      )}
+      {person.social && (
+        <div class="flex gap-3 justify-center pt-4 border-t border-gray-100">
+          {person.social.instagram && (
+            <a href={person.social.instagram} class="w-10 h-10 rounded-full bg-gradient-to-r from-pink-500 to-purple-500 flex items-center justify-center text-white text-lg transition-transform duration-300 hover:scale-110 hover:shadow-lg" target="_blank" rel="noopener noreferrer">
+              📷
+            </a>
+          )}
+          {person.social.linkedin && (
+            <a href={person.social.linkedin} class="w-10 h-10 rounded-full bg-gradient-to-r from-blue-600 to-blue-700 flex items-center justify-center text-white text-lg transition-transform duration-300 hover:scale-110 hover:shadow-lg" target="_blank" rel="noopener noreferrer">
+              💼
+            </a>
+          )}
+          {person.social.twitter && (
+            <a href={person.social.twitter} class="w-10 h-10 rounded-full bg-gradient-to-r from-blue-400 to-blue-500 flex items-center justify-center text-white text-lg transition-transform duration-300 hover:scale-110 hover:shadow-lg" target="_blank" rel="noopener noreferrer">
+              🐦
+            </a>
+          )}
+        </div>
+      )}
+    </div>
+  </div>
+)}
+
+{variant === 'detailed' && (
+  <div class="bg-gradient-to-br from-white to-cream-light rounded-3xl shadow-2xl overflow-hidden transition-all duration-300 hover:shadow-custom-hover">
+    <div class="relative h-56 bg-gradient-to-br from-primary to-primary-dark overflow-hidden">
+      <div class="absolute inset-0 opacity-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmlkKSIvPjwvc3ZnPg==')]"></div>
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2">
+        <img 
+          src={person.image} 
+          alt={person.name}
+          class={`w-28 h-28 md:w-32 md:h-32 object-cover object-top ${shapeClass[imageShape]} border-[6px] border-white shadow-2xl`}
+        />
+      </div>
+    </div>
+    <div class="pt-10 md:pt-12 pb-10 px-8 md:px-10 text-center">
+      <h3 class="text-3xl font-serif font-bold text-primary mb-2">{person.name}</h3>
+      <p class="text-secondary-light font-bold text-base uppercase tracking-widest mb-4">{person.role}</p>
+      {person.bio && (
+        <p class="text-gray-600 leading-relaxed mb-6 max-w-md mx-auto">{person.bio}</p>
+      )}
+      
+      {showContact && (person.email || person.phone) && (
+        <div class="bg-white rounded-2xl p-4 mb-6 shadow-md">
+          {person.email && (
+            <div class="flex items-center justify-center gap-2 mb-2">
+              <span class="text-lg">✉️</span>
+              <a href={`mailto:${person.email}`} class="text-primary hover:text-secondary-light transition-colors text-sm font-medium">
+                {person.email}
+              </a>
+            </div>
+          )}
+          {person.phone && (
+            <div class="flex items-center justify-center gap-2">
+              <span class="text-lg">📞</span>
+              <a href={`tel:${person.phone}`} class="text-primary hover:text-secondary-light transition-colors text-sm font-medium">
+                {person.phone}
+              </a>
+            </div>
+          )}
+        </div>
+      )}
+
+      {person.social && (
+        <div class="flex gap-4 justify-center">
+          {person.social.instagram && (
+            <a href={person.social.instagram} class="w-12 h-12 rounded-xl bg-gradient-to-r from-pink-500 to-purple-500 flex items-center justify-center text-white text-xl transition-all duration-300 hover:scale-110 hover:shadow-xl" target="_blank" rel="noopener noreferrer">
+              📷
+            </a>
+          )}
+          {person.social.linkedin && (
+            <a href={person.social.linkedin} class="w-12 h-12 rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 flex items-center justify-center text-white text-xl transition-all duration-300 hover:scale-110 hover:shadow-xl" target="_blank" rel="noopener noreferrer">
+              💼
+            </a>
+          )}
+          {person.social.twitter && (
+            <a href={person.social.twitter} class="w-12 h-12 rounded-xl bg-gradient-to-r from-blue-400 to-blue-500 flex items-center justify-center text-white text-xl transition-all duration-300 hover:scale-110 hover:shadow-xl" target="_blank" rel="noopener noreferrer">
+              🐦
+            </a>
+          )}
+        </div>
+      )}
+    </div>
+  </div>
+)}

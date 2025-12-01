@@ -1,48 +1,94 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import ImageGallery from "../components/ImageGallery.astro";
+import ProfileCard from "../components/ProfileCard.astro";
+
+// Mini galería para la página de inicio
+const highlightImages = [
+  {
+    src: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&h=400&fit=crop",
+    alt: "Espresso perfecto",
+    title: "Espresso",
+    description: "Intenso y aromático"
+  },
+  {
+    src: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&h=400&fit=crop",
+    alt: "Arte Latte",
+    title: "Latte Art",
+    description: "Diseños únicos"
+  },
+  {
+    src: "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=400&h=400&fit=crop",
+    alt: "Postres artesanales",
+    title: "Repostería",
+    description: "Hecho con amor"
+  }
+];
+
+// Equipo destacado
+const featuredTeam = [
+  {
+    name: "María González",
+    role: "Fundadora & CEO",
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop",
+    bio: "Apasionada del café desde hace 15 años"
+  },
+  {
+    name: "Carlos Ruiz",
+    role: "Head Barista",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
+    bio: "Campeón nacional de barismo 2023"
+  },
+  {
+    name: "Ana Martínez",
+    role: "Maestra Pastelera",
+    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop",
+    bio: "Formada en París, crea postres únicos"
+  }
+];
 ---
 
 <BaseLayout title="Inicio">
-  <section class="hero">
+  <section class="text-center mb-8">
     <h1>Bienvenido a Cafetería Aroma</h1>
-    <p class="hero-subtitle">Donde cada taza cuenta una historia</p>
+    <p class="text-2xl italic text-secondary mt-[-1rem]">Donde cada taza cuenta una historia</p>
   </section>
 
-  <section class="image-section">
-    <img src="/img/cafe.jpg" alt="Café recién hecho" class="hero-image" />
+  <section class="text-center my-12">
+    <img src="/img/cafe.jpg" alt="Café recién hecho" class="max-w-3xl w-full mx-auto rounded-3xl shadow-2xl transition-transform duration-300 hover:scale-105" />
   </section>
 
-  <section class="intro">
-    <p class="intro-text">
+  <section class="max-w-4xl mx-auto my-12">
+    <p class="text-xl leading-relaxed text-gray-600">
       En <strong>Cafetería Aroma</strong> creemos que cada taza cuenta. Disfruta de un ambiente acogedor y aromas que inspiran. 
       Nuestra pasión por el café de calidad y la atención al detalle nos convierte en tu refugio perfecto.
     </p>
   </section>
 
-  <section class="features">
+  <section class="my-20">
     <h2>¿Por qué elegirnos?</h2>
-    <div class="features-grid">
-      <div class="feature-card">
-        <div class="feature-icon">🌱</div>
-        <h3>Ingredientes Naturales</h3>
-        <p>Seleccionamos cuidadosamente granos de origen sostenible y productos orgánicos de primera calidad.</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+      <div class="bg-white p-10 rounded-3xl shadow-custom text-center transition-all duration-300 hover:-translate-y-3 hover:shadow-custom-hover border-2 border-transparent hover:border-secondary-light">
+        <div class="text-6xl mb-4 animate-bounce-slow">🌱</div>
+        <h3 class="text-2xl mb-4">Ingredientes Naturales</h3>
+        <p class="text-base text-gray-600 leading-relaxed">Seleccionamos cuidadosamente granos de origen sostenible y productos orgánicos de primera calidad.</p>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon">👨‍🍳</div>
-        <h3>Preparación Artesanal</h3>
-        <p>Cada bebida es preparada con técnicas tradicionales por nuestros baristas expertos.</p>
+      <div class="bg-white p-10 rounded-3xl shadow-custom text-center transition-all duration-300 hover:-translate-y-3 hover:shadow-custom-hover border-2 border-transparent hover:border-secondary-light">
+        <div class="text-6xl mb-4 animate-bounce-slow">👨‍🍳</div>
+        <h3 class="text-2xl mb-4">Preparación Artesanal</h3>
+        <p class="text-base text-gray-600 leading-relaxed">Cada bebida es preparada con técnicas tradicionales por nuestros baristas expertos.</p>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon">❤️</div>
-        <h3>Ambiente Familiar</h3>
-        <p>Un espacio acogedor donde te sentirás como en casa, perfecto para compartir momentos especiales.</p>
+      <div class="bg-white p-10 rounded-3xl shadow-custom text-center transition-all duration-300 hover:-translate-y-3 hover:shadow-custom-hover border-2 border-transparent hover:border-secondary-light">
+        <div class="text-6xl mb-4 animate-bounce-slow">❤️</div>
+        <h3 class="text-2xl mb-4">Ambiente Familiar</h3>
+        <p class="text-base text-gray-600 leading-relaxed">Un espacio acogedor donde te sentirás como en casa, perfecto para compartir momentos especiales.</p>
       </div>
     </div>
   </section>
 
-  <section class="values">
+  <section class="my-20">
     <h2>Nuestros Valores</h2>
-    <ul class="values-list">
+    <ul class="max-w-2xl">
       <li>Compromiso con la calidad en cada taza</li>
       <li>Atención personalizada a cada cliente</li>
       <li>Pasión por la cultura del café</li>
@@ -50,228 +96,65 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     </ul>
   </section>
 
-  <section class="testimonials">
+  <section class="my-20">
+    <h2>Galería Destacada</h2>
+    <p class="text-lg text-gray-600 mb-8">Un vistazo a nuestra pasión por el café</p>
+    <ImageGallery 
+      images={highlightImages} 
+      columns={3}
+      aspectRatio="square"
+      gap="lg"
+    />
+    <div class="text-center mt-8">
+      <a href="/galeria" class="inline-block px-8 py-3 bg-gradient-to-r from-secondary to-secondary-light text-white no-underline font-semibold rounded-full transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+        Ver Galería Completa →
+      </a>
+    </div>
+  </section>
+
+  <section class="my-20 bg-gradient-to-br from-cream-light to-white p-16 rounded-[2rem]">
     <h2>Lo que dicen nuestros clientes</h2>
-    <div class="testimonials-grid">
-      <div class="testimonial">
-        <div class="stars">⭐⭐⭐⭐⭐</div>
-        <p class="testimonial-text">"El mejor café de Madrid. El ambiente es increíble y el personal super amable."</p>
-        <p class="testimonial-author">- María González</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+      <div class="bg-white p-8 rounded-2xl shadow-lg transition-transform duration-300 hover:scale-105">
+        <div class="text-xl mb-4">⭐⭐⭐⭐⭐</div>
+        <p class="italic text-gray-600 mb-4 text-base">"El mejor café de Madrid. El ambiente es increíble y el personal super amable."</p>
+        <p class="font-semibold text-primary text-right text-sm">- María González</p>
       </div>
-      <div class="testimonial">
-        <div class="stars">⭐⭐⭐⭐⭐</div>
-        <p class="testimonial-text">"Mi lugar favorito para trabajar. El cappuccino es arte puro y las tartas deliciosas."</p>
-        <p class="testimonial-author">- Carlos Ruiz</p>
+      <div class="bg-white p-8 rounded-2xl shadow-lg transition-transform duration-300 hover:scale-105">
+        <div class="text-xl mb-4">⭐⭐⭐⭐⭐</div>
+        <p class="italic text-gray-600 mb-4 text-base">"Mi lugar favorito para trabajar. El cappuccino es arte puro y las tartas deliciosas."</p>
+        <p class="font-semibold text-primary text-right text-sm">- Carlos Ruiz</p>
       </div>
-      <div class="testimonial">
-        <div class="stars">⭐⭐⭐⭐⭐</div>
-        <p class="testimonial-text">"Calidad excepcional. Se nota el cuidado en cada detalle, desde el grano hasta la presentación."</p>
-        <p class="testimonial-author">- Ana Martínez</p>
+      <div class="bg-white p-8 rounded-2xl shadow-lg transition-transform duration-300 hover:scale-105">
+        <div class="text-xl mb-4">⭐⭐⭐⭐⭐</div>
+        <p class="italic text-gray-600 mb-4 text-base">"Calidad excepcional. Se nota el cuidado en cada detalle, desde el grano hasta la presentación."</p>
+        <p class="font-semibold text-primary text-right text-sm">- Ana Martínez</p>
       </div>
     </div>
   </section>
 
-  <section class="cta">
-    <h2>Visítanos Hoy</h2>
-    <p>Descubre por qué somos la cafetería favorita del barrio</p>
-    <a href="/contacto" class="cta-button">Encuéntranos</a>
+  <section class="my-20">
+    <h2>Conoce a Nuestro Equipo</h2>
+    <p class="text-lg text-gray-600 mb-8">Las personas que hacen especial cada visita</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {featuredTeam.map(member => (
+        <ProfileCard 
+          person={member} 
+          variant="compact"
+          imageShape="circle"
+        />
+      ))}
+    </div>
+    <div class="text-center mt-8">
+      <a href="/equipo" class="inline-block px-8 py-3 bg-gradient-to-r from-secondary to-secondary-light text-white no-underline font-semibold rounded-full transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+        Conocer al Equipo Completo →
+      </a>
+    </div>
   </section>
 
-  <style>
-    .hero {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-
-    .hero-subtitle {
-      font-size: 1.5rem;
-      font-style: italic;
-      color: #c4a572;
-      margin-top: -1rem;
-    }
-
-    .image-section {
-      text-align: center;
-      margin: 3rem 0;
-    }
-
-    .hero-image {
-      max-width: 800px;
-      width: 100%;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-    }
-
-    .intro {
-      max-width: 900px;
-      margin: 3rem auto;
-    }
-
-    .intro-text {
-      font-size: 1.2rem;
-      line-height: 1.8;
-      color: #555;
-    }
-
-    .features {
-      margin: 5rem 0;
-    }
-
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-top: 3rem;
-    }
-
-    .feature-card {
-      background: white;
-      padding: 2.5rem;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      text-align: center;
-      transition: all 0.3s ease;
-      border: 2px solid transparent;
-    }
-
-    .feature-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-      border-color: #d4a574;
-    }
-
-    .feature-icon {
-      font-size: 4rem;
-      margin-bottom: 1rem;
-      animation: bounce 2s infinite;
-    }
-
-    @keyframes bounce {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-10px);
-      }
-    }
-
-    .feature-card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: #6f4e37;
-    }
-
-    .feature-card p {
-      font-size: 1rem;
-      color: #666;
-      line-height: 1.6;
-    }
-
-    .values {
-      margin: 5rem 0;
-    }
-
-    .values-list {
-      max-width: 700px;
-    }
-
-    .testimonials {
-      margin: 5rem 0;
-      background: linear-gradient(135deg, #faf6f1 0%, #fff 100%);
-      padding: 4rem 2rem;
-      border-radius: 30px;
-    }
-
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      margin-top: 3rem;
-    }
-
-    .testimonial {
-      background: white;
-      padding: 2rem;
-      border-radius: 15px;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-      transition: transform 0.3s ease;
-    }
-
-    .testimonial:hover {
-      transform: scale(1.05);
-    }
-
-    .stars {
-      font-size: 1.2rem;
-      margin-bottom: 1rem;
-    }
-
-    .testimonial-text {
-      font-style: italic;
-      color: #555;
-      margin-bottom: 1rem;
-      font-size: 1rem;
-    }
-
-    .testimonial-author {
-      font-weight: 600;
-      color: #6f4e37;
-      text-align: right;
-      font-size: 0.95rem;
-    }
-
-    .cta {
-      text-align: center;
-      margin: 5rem 0;
-      padding: 4rem 2rem;
-      background: linear-gradient(135deg, #6f4e37, #4a3428);
-      border-radius: 30px;
-      color: white;
-    }
-
-    .cta h2 {
-      color: white;
-      margin-bottom: 1rem;
-    }
-
-    .cta h2::after {
-      background: linear-gradient(90deg, #c4a572, #d4a574);
-    }
-
-    .cta p {
-      color: #f0e6d2;
-      font-size: 1.3rem;
-      margin-bottom: 2rem;
-    }
-
-    .cta-button {
-      display: inline-block;
-      padding: 1.2rem 3rem;
-      background: linear-gradient(135deg, #c4a572, #d4a574);
-      color: white;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 1.2rem;
-      border-radius: 50px;
-      transition: all 0.3s ease;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .cta-button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-      background: linear-gradient(135deg, #d4a574, #c4a572);
-    }
-
-    @media (max-width: 768px) {
-      .features-grid, .testimonials-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .hero-subtitle {
-        font-size: 1.2rem;
-      }
-    }
-  </style>
+  <section class="text-center my-20 px-8 py-16 bg-gradient-to-br from-primary to-primary-dark rounded-[2rem] text-white">
+    <h2 class="text-white mb-4">Visítanos Hoy</h2>
+    <p class="text-cream text-xl mb-8">Descubre por qué somos la cafetería favorita del barrio</p>
+    <a href="/contacto" class="inline-block px-12 py-5 bg-gradient-to-r from-secondary to-secondary-light text-white no-underline font-bold text-xl rounded-full transition-all duration-300 shadow-2xl hover:-translate-y-1 hover:shadow-custom-hover uppercase tracking-wider">Encuéntranos</a>
+  </section>
 </BaseLayout>

@@ -1,0 +1,76 @@
+---
+interface Image {
+  src: string;
+  alt: string;
+  title?: string;
+  description?: string;
+}
+
+interface Props {
+  images: Image[];
+  columns?: 2 | 3 | 4;
+  aspectRatio?: 'square' | 'portrait' | 'landscape' | 'auto';
+  gap?: 'sm' | 'md' | 'lg';
+  showOverlay?: boolean;
+}
+
+const { 
+  images, 
+  columns = 3, 
+  aspectRatio = 'auto',
+  gap = 'md',
+  showOverlay = true 
+} = Astro.props;
+
+// Mapeo de columnas a clases de Tailwind
+const columnsClass = {
+  2: 'md:grid-cols-2',
+  3: 'md:grid-cols-2 lg:grid-cols-3',
+  4: 'md:grid-cols-2 lg:grid-cols-4'
+};
+
+// Mapeo de aspect ratio
+const aspectRatioClass = {
+  square: 'aspect-square',
+  portrait: 'aspect-[3/4]',
+  landscape: 'aspect-[4/3]',
+  auto: ''
+};
+
+// Mapeo de espaciado
+const gapClass = {
+  sm: 'gap-4',
+  md: 'gap-6',
+  lg: 'gap-8'
+};
+---
+
+<div class={`grid grid-cols-1 ${columnsClass[columns]} ${gapClass[gap]}`}>
+  {images.map((image) => (
+    <div class="group relative overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+      <div class={`${aspectRatioClass[aspectRatio]} ${aspectRatio === 'auto' ? '' : 'w-full'}`}>
+        <img 
+          src={image.src} 
+          alt={image.alt}
+          class={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 ${aspectRatio === 'auto' ? 'rounded-2xl' : ''}`}
+          loading="lazy"
+        />
+      </div>
+      
+      {showOverlay && (image.title || image.description) && (
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6 rounded-2xl">
+          {image.title && (
+            <h3 class="text-white font-serif text-2xl font-bold mb-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+              {image.title}
+            </h3>
+          )}
+          {image.description && (
+            <p class="text-white/90 text-sm leading-relaxed transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">
+              {image.description}
+            </p>
+          )}
+        </div>
+      )}
+    </div>
+  ))}
+</div>

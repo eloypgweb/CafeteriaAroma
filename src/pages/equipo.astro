@@ -1,0 +1,163 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ProfileCard from "../components/ProfileCard.astro";
+
+// Equipo de Cafetería Aroma
+const team = [
+  {
+    name: "Eloy Pérez",
+    role: "Fundador & CEO",
+    image: "/img/eloyp.jpg",
+    bio: "Apasionado del café desde hace 15 años. Eloy fundó Cafetería Aroma con la visión de crear un espacio donde cada taza cuenta una historia.",
+    email: "eloyperezgomez2004@gmail.com",
+    phone: "+34 640 366 490",
+    social: {
+      instagram: "https://instagram.com/eloyypg",
+      linkedin: "https://linkedin.com/in/eloyperezgomez"
+    }
+  },
+  {
+    name: "Carlos Ruiz",
+    role: "Head Barista",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
+    bio: "Campeón nacional de barismo 2023. Carlos lidera nuestro equipo de baristas y es el maestro detrás de cada café perfecto.",
+    social: {
+      instagram: "https://instagram.com/carlos_barista",
+      twitter: "https://twitter.com/carlosbarista"
+    }
+  },
+  {
+    name: "Ana Martínez",
+    role: "Maestra Pastelera",
+    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop",
+    bio: "Formada en París, Ana crea cada día los postres más deliciosos que complementan perfectamente nuestros cafés.",
+    social: {
+      instagram: "https://instagram.com/ana_patisserie"
+    }
+  },
+  {
+    name: "Javier López",
+    role: "Barista Senior",
+    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop",
+    bio: "Especialista en métodos de extracción alternativos. Javier puede prepararte el café perfecto según tus preferencias.",
+    social: {
+      instagram: "https://instagram.com/javi_coffee",
+      twitter: "https://twitter.com/javicoffee"
+    }
+  },
+  {
+    name: "Laura Sánchez",
+    role: "Community Manager",
+    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=400&fit=crop",
+    bio: "Laura gestiona nuestra presencia online y organiza los eventos especiales de cata y talleres de café.",
+    social: {
+      instagram: "https://instagram.com/laura_cafearoma",
+      linkedin: "https://linkedin.com/in/laurasanchez",
+      twitter: "https://twitter.com/laura_aroma"
+    }
+  },
+  {
+    name: "Diego Fernández",
+    role: "Barista & Sommelier",
+    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=400&fit=crop",
+    bio: "Experto en maridaje de café y postres. Diego te ayudará a descubrir combinaciones sorprendentes.",
+    social: {
+      linkedin: "https://linkedin.com/in/diegofernandez"
+    }
+  }
+];
+
+// Fundadora destacada
+const founder = team[0];
+
+// Resto del equipo
+const restOfTeam = team.slice(1);
+---
+
+<BaseLayout title="Nuestro Equipo">
+  <section class="mb-12">
+    <h1>Conoce Nuestro Equipo</h1>
+    <p class="text-xl text-gray-600">Las personas que hacen especial cada visita a Cafetería Aroma</p>
+  </section>
+
+  <!-- Fundadora destacada - Variant Detailed -->
+  <section class="mb-20 max-w-2xl mx-auto">
+    <h2 class="mb-12">Nuestra Fundadora</h2>
+    <ProfileCard 
+      person={founder} 
+      variant="detailed"
+      imageShape="circle"
+      showContact={true}
+    />
+  </section>
+
+  <!-- Equipo principal - Variant Default -->
+  <section class="mb-20">
+    <h2 class="mb-12">El Corazón de Aroma</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {restOfTeam.map((member) => (
+        <ProfileCard 
+          person={member} 
+          variant="default"
+          imageShape="circle"
+        />
+      ))}
+    </div>
+  </section>
+
+  <!-- Ejemplo compacto - Todos juntos -->
+  <section class="mb-20 bg-gradient-to-br from-cream-light to-white p-12 rounded-[2rem]">
+    <h2 class="mb-8">Vista Compacta</h2>
+    <p class="text-lg text-gray-600 mb-10">Nuestro equipo completo en formato compacto</p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      {team.map((member) => (
+        <ProfileCard 
+          person={member} 
+          variant="compact"
+          imageShape="rounded"
+        />
+      ))}
+    </div>
+  </section>
+
+  <!-- Variantes de forma de imagen -->
+  <section class="mb-20">
+    <h2 class="mb-8">Diferentes Estilos</h2>
+    <p class="text-lg text-gray-600 mb-10">El mismo componente, diferentes formas</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div>
+        <h3 class="text-center text-xl font-bold text-primary mb-4">Circular</h3>
+        <ProfileCard 
+          person={team[1]} 
+          variant="default"
+          imageShape="circle"
+        />
+      </div>
+      <div>
+        <h3 class="text-center text-xl font-bold text-primary mb-4">Redondeado</h3>
+        <ProfileCard 
+          person={team[2]} 
+          variant="default"
+          imageShape="rounded"
+        />
+      </div>
+      <div>
+        <h3 class="text-center text-xl font-bold text-primary mb-4">Cuadrado</h3>
+        <ProfileCard 
+          person={team[3]} 
+          variant="default"
+          imageShape="square"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="text-center my-20 px-8 py-16 bg-gradient-to-br from-primary to-primary-dark rounded-[2rem] text-white">
+    <h2 class="text-white mb-4">¿Quieres formar parte del equipo?</h2>
+    <p class="text-cream text-xl mb-8">Siempre buscamos apasionados del café que quieran unirse a nuestra familia</p>
+    <a href="/contacto" class="inline-block px-12 py-5 bg-gradient-to-r from-secondary to-secondary-light text-white no-underline font-bold text-xl rounded-full transition-all duration-300 shadow-2xl hover:-translate-y-1 hover:shadow-custom-hover uppercase tracking-wider">
+      Contáctanos
+    </a>
+  </section>
+</BaseLayout>

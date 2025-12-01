@@ -1,0 +1,81 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ProfileCard from "../components/ProfileCard.astro";
+import ImageGallery from "../components/ImageGallery.astro";
+
+// Portfolio de fotógrafo - Combinando ProfileCard + ImageGallery
+const photographer = {
+  name: "Sofía Ramírez",
+  role: "Fotógrafa Profesional",
+  image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=400&fit=crop",
+  bio: "Especializada en fotografía de productos y gastronomía. Con más de 10 años de experiencia capturando la esencia de cada marca.",
+  email: "sofia@fotografia.com",
+  phone: "+34 600 987 654",
+  social: {
+    instagram: "https://instagram.com/sofia_photography",
+    linkedin: "https://linkedin.com/in/sofiaramirez"
+  }
+};
+
+// Portfolio de trabajos
+const portfolioImages = [
+  {
+    src: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&h=600&fit=crop",
+    alt: "Fotografía de producto - Café",
+    title: "Coffee Artisan Co.",
+    description: "Campaña para marca de café premium"
+  },
+  {
+    src: "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=600&h=600&fit=crop",
+    alt: "Fotografía de producto - Postres",
+    title: "Sweet Delights",
+    description: "Book fotográfico para pastelería"
+  },
+  {
+    src: "https://images.unsplash.com/photo-1511920170033-f8396924c348?w=600&h=600&fit=crop",
+    alt: "Fotografía de granos",
+    title: "Organic Origins",
+    description: "Campaña de café orgánico"
+  },
+  {
+    src: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600&h=600&fit=crop",
+    alt: "Fotografía de latte art",
+    title: "Barista Dreams",
+    description: "Portfolio para competición"
+  }
+];
+---
+
+<BaseLayout title="Portfolio - Sofía Ramírez">
+  <!-- Sección de presentación -->
+  <section class="mb-20 max-w-3xl mx-auto">
+    <ProfileCard 
+      person={photographer}
+      variant="detailed"
+      imageShape="circle"
+      showContact={true}
+    />
+  </section>
+
+  <!-- Portfolio de trabajos -->
+  <section class="mb-20">
+    <h2>Portfolio Destacado</h2>
+    <p class="text-lg text-gray-600 mb-8">Algunos de mis trabajos más recientes</p>
+    <ImageGallery 
+      images={portfolioImages}
+      columns={4}
+      aspectRatio="square"
+      gap="lg"
+      showOverlay={true}
+    />
+  </section>
+
+  <!-- CTA -->
+  <section class="text-center my-20 px-8 py-16 bg-gradient-to-br from-primary to-primary-dark rounded-[2rem] text-white">
+    <h2 class="text-white mb-4">¿Necesitas un fotógrafo profesional?</h2>
+    <p class="text-cream text-xl mb-8">Hablemos de tu próximo proyecto</p>
+    <a href="mailto:sofia@fotografia.com" class="inline-block px-12 py-5 bg-gradient-to-r from-secondary to-secondary-light text-white no-underline font-bold text-xl rounded-full transition-all duration-300 shadow-2xl hover:-translate-y-1 hover:shadow-custom-hover uppercase tracking-wider">
+      Contactar Ahora
+    </a>
+  </section>
+</BaseLayout>
